@@ -481,46 +481,6 @@
   }
   .meeting-link a:hover { text-decoration: underline; }
 
-  /* ---- data class: minutes-doc ---- */
-  /* .minutes-doc {
-    padding: 16px 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .minutes-doc:last-child { border-bottom: none; padding-bottom: 0; }
-  .minutes-doc-header {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 10px;
-  }
-  .minutes-doc-title {
-    font-family: var(--font-display);
-    font-size: 14px; font-weight: 600;
-    color: var(--text);
-  }
-  .minutes-doc-meta {
-    font-family: var(--font-mono);
-    font-size: 11px; color: var(--text-muted);
-    margin-bottom: 10px;
-  }
-  .minutes-content {
-    font-size: 13px; color: var(--text-muted);
-    line-height: 1.7;
-  }
-  .minutes-content .agenda-item {
-    display: flex; gap: 8px;
-    padding: 6px 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .minutes-content .agenda-item:last-child { border-bottom: none; }
-  .agenda-num {
-    font-family: var(--font-mono); font-size: 11px; color: var(--accent);
-    min-width: 20px; padding-top: 2px;
-  }
-  .agenda-text { flex: 1; font-size: 13px; color: var(--text-muted); }
-  .agenda-owner {
-    font-family: var(--font-mono); font-size: 11px; color: var(--text-faint);
-    flex-shrink: 0;
-  } */
-
   .next-meeting-banner {
     background: var(--accent-dim);
     border: 1px solid rgba(200,240,77,.2);
@@ -561,7 +521,7 @@
   animation: slideDown 0.2s ease;
 }
 .mi-body.open { display: block; }
-@keyframes slideDown { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:none; } }
+/* @keyframes slideDown { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:none; } } */
 
 /* MINUTE CONTENT CLASSES — use these when manually adding minutes */
 .mi-date  { font-family: var(--font-mono); font-size: 11px; color: var(--text-faint); }
@@ -866,5 +826,10 @@
   }
 
   @media (max-width: 450px) {
-    
+    .topbar{
+      line-height: 1.2;
+    }
+    .mi-body{
+      padding: 0 2px 3px;
+    }
   }

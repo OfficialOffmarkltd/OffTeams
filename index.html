@@ -69,15 +69,17 @@
       <span class="nav-label">Calendar</span>
     </button>
 
-    <button class="nav-item" onclick="navigate('archive', this)">
+    <button class="nav-item" onclick="navigate('deliverables', this)">
       <span class="nav-icon">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/>
-          <line x1="10" y1="12" x2="14" y2="12"/>
+          <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
         </svg>
       </span>
-      <span class="nav-label">Archive</span>
+      <span class="nav-label">Deliverables</span>
     </button>
+
+
 
     <div class="nav-section-label">Company</div>
 
@@ -90,15 +92,17 @@
       </span>
       <span class="nav-label">Profile</span>
     </button>
-          <button class="nav-item" onclick="navigate('deliverables', this)">
+
+    <button class="nav-item" onclick="navigate('archive', this)">
       <span class="nav-icon">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+          <polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/>
+          <line x1="10" y1="12" x2="14" y2="12"/>
         </svg>
       </span>
-      <span class="nav-label">Deliverables</span>
+      <span class="nav-label">Archive</span>
     </button>
+
   </nav>
 
 
@@ -210,7 +214,7 @@
 
         <!-- MINUTES — populated from DATA.meetings.minutes -->
         <div>
-          <div class="card-title" style="margin-bottom:10px">Meeting minutes</div>
+          <div class="card-title" style="margin-bottom:10px; border-left: 5px solid white; padding-left: 0.6rem; border-radius: 6px;">Meeting minutes</div>
           <div class="minutes-list" id="minutes-list"></div>
         </div>
 
@@ -218,9 +222,79 @@
       </div>
     </div>
 
-    <!-- ======================================================
-         PAGE: PROFILE
-    ====================================================== -->
+    <div class="page active" id="page-deliverables">
+    
+    </div>
+
+    <!-- #page-calendar -->
+    <div class="page" id="page-calendar">
+
+      <div class="grid-2">
+
+        CALENDAR GRID
+        <div>
+          <div class="section-header mb-16">
+            <div class="section-title"><div class="dot"></div><span id="cal-month-label">April 2026</span></div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn btn-ghost" onclick="changeMonth(-1)">‹</button>
+              <button class="btn btn-ghost" onclick="changeMonth(1)">›</button>
+            </div>
+          </div>
+          <div class="cal-grid" id="cal-grid"></div>
+        </div>
+
+        UPCOMING EVENTS
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Upcoming Events
+            </div>
+          </div>
+        
+          <!-- ================================================
+               EVENT DATA — add/edit .event-item blocks.
+               Fields: .month, .day, .event-name, .event-desc,
+               .event-time, tag class (tag-green/blue/red/gray)
+          ================================================ -->
+          <div id="events-list">
+
+            <div class="event-item">
+              <div class="event-date-block">
+                <div class="month">April</div>
+                <div class="day">30</div>
+              </div>
+              <div class="event-info">
+                <div class="event-name">Genesis Design Draft</div>
+                <div class="event-desc">Make the decision for the set to use - Ike and Kyrian</div>
+                <div class="event-time"><span class="tag tag-gray">Meeting</span></div>
+              </div>
+            </div>
+
+            <div class="event-item">
+              <div class="event-date-block">
+                <div class="month">May</div>
+                <div class="day">01</div>
+              </div>
+              <div class="event-info">
+                <div class="event-name">Roadmap Final Draft</div>
+                <div class="event-desc">Wilfrid drafting the final Roadmap actionable steps</div>
+                <div class="event-time">
+                  <span class="tag tag-blue">11:00 AM WAT</span>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+          <!-- /#events-list -->
+        </div>
+
+      </div>
+    </div>
+    <!-- /#page-calendar -->
+
+<!-- /#page-profile -->
     <div class="page" id="page-profile">
 
       <!-- ================================================
@@ -353,25 +427,26 @@
 
       </div><!-- /#cofounder-grid -->
 
-    </div><!-- /#page-profile -->
+    </div>
+    <!-- /#page-profile -->
 
     <!-- ======================================================
          PAGE: ARCHIVE
     ====================================================== -->
     <div class="page" id="page-archive">
 
-      <div class="archive-toolbar">
+      <!-- <div class="archive-toolbar">
         <div class="search-wrap">
           <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           <input class="archive-search" id="archive-search" type="text" placeholder="Search files and folders..." oninput="filterArchive()" />
         </div>
-      </div>
+      </div> -->
 
       <!-- ================================================
            FOLDER DATA — add/edit .folder-item blocks.
            Fields: .folder-icon (emoji), .folder-name, .folder-count
       ================================================ -->
-      <div class="section-header mb-16">
+      <!-- <div class="section-header mb-16">
         <div class="section-title"><div class="dot"></div>Folders</div>
       </div>
 
@@ -413,14 +488,14 @@
           <div class="folder-count">2 files</div>
         </div>
 
-      </div><!-- /#folders-grid -->
+      </div>/#folders-grid -->
 
       <!-- ================================================
            FILE DATA — add/edit .archive-file blocks.
            Fields: .file-icon (emoji), .file-name, .file-meta,
            href on .file-dl (link to actual file path)
       ================================================ -->
-      <div class="section-header mb-16">
+      <!-- <div class="section-header mb-16">
         <div class="section-title"><div class="dot"></div>All Files</div>
         <span class="tag tag-gray" id="file-count-tag">7 files</span>
       </div>
@@ -434,7 +509,6 @@
             <div class="file-meta">PDF · 3.4 MB · Updated Apr 22, 2026</div>
           </div>
           <span class="tag tag-blue">Investor Relations</span>
-          <!-- Replace href with actual file path: e.g. href="./files/offmark-pitch-deck-v3.pdf" -->
           <a class="file-dl" href="./files/offmark-pitch-deck-v3.pdf" download>
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             Download
@@ -519,119 +593,11 @@
           </a>
         </div>
 
-      </div><!-- /#files-list -->
-
-    </div><!-- /#page-archive -->
-
-    <!-- ======================================================
-         PAGE: CALENDAR
-    ====================================================== -->
-    <div class="page" id="page-calendar">
-
-      <div class="grid-2">
-
-        <!-- CALENDAR GRID -->
-        <div>
-          <div class="section-header mb-16">
-            <div class="section-title"><div class="dot"></div><span id="cal-month-label">April 2026</span></div>
-            <div style="display:flex;gap:8px;">
-              <button class="btn btn-ghost" onclick="changeMonth(-1)">‹</button>
-              <button class="btn btn-ghost" onclick="changeMonth(1)">›</button>
-            </div>
-          </div>
-          <div class="cal-grid" id="cal-grid"></div>
-        </div>
-
-        <!-- UPCOMING EVENTS -->
-        <div class="card">
-          <div class="card-header">
-            <div class="card-title">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              Upcoming Events
-            </div>
-          </div>
-
-          <!-- ================================================
-               EVENT DATA — add/edit .event-item blocks.
-               Fields: .month, .day, .event-name, .event-desc,
-               .event-time, tag class (tag-green/blue/red/gray)
-          ================================================ -->
-          <div id="events-list">
-
-            <div class="event-item">
-              <div class="event-date-block">
-                <div class="month">May</div>
-                <div class="day">01</div>
-              </div>
-              <div class="event-info">
-                <div class="event-name">Workers' Day — Office Closed</div>
-                <div class="event-desc">Public holiday. No meetings scheduled.</div>
-                <div class="event-time"><span class="tag tag-gray">Holiday</span></div>
-              </div>
-            </div>
-
-            <div class="event-item">
-              <div class="event-date-block">
-                <div class="month">May</div>
-                <div class="day">06</div>
-              </div>
-              <div class="event-info">
-                <div class="event-name">Investor Demo Day</div>
-                <div class="event-desc">Live product demo for Series A prospects. Prepare slides and live environment.</div>
-                <div class="event-time">
-                  <span class="tag tag-blue">11:00 AM WAT</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="event-item">
-              <div class="event-date-block">
-                <div class="month">May</div>
-                <div class="day">14</div>
-              </div>
-              <div class="event-info">
-                <div class="event-name">Beta Launch — Internal</div>
-                <div class="event-desc">Soft launch of Offmark v1 beta to first 50 users. Monitoring dashboard live.</div>
-                <div class="event-time">
-                  <span class="tag tag-green">All Day</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="event-item">
-              <div class="event-date-block">
-                <div class="month">May</div>
-                <div class="day">20</div>
-              </div>
-              <div class="event-info">
-                <div class="event-name">Board Quarterly Review</div>
-                <div class="event-desc">Q1 performance review with advisors. Financials, KPIs, and roadmap alignment.</div>
-                <div class="event-time">
-                  <span class="tag tag-red">02:00 PM WAT</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="event-item">
-              <div class="event-date-block">
-                <div class="month">Jun</div>
-                <div class="day">03</div>
-              </div>
-              <div class="event-info">
-                <div class="event-name">Team Offsite — Ibadan</div>
-                <div class="event-desc">Full-team strategy retreat. 2-day event. Accommodation confirmed.</div>
-                <div class="event-time">
-                  <span class="tag tag-green">Multi-day</span>
-                </div>
-              </div>
-            </div>
-
-          </div><!-- /#events-list -->
-        </div>
-
-      </div>
-    </div><!-- /#page-calendar -->
-
+      </div>/#files-list -->
+      I'm working on it...
+    </div> 
+<!-- /#page-archive -->
+    
   </div><!-- /#content -->
 </div><!-- /#main -->
 

@@ -175,15 +175,13 @@ function esc(str) {
   return d.innerHTML;
 } // very important
 
-/* =============================================================
-   NAVIGATION
-============================================================= */
+ //  NAVIGATION
 const topbarMeta = {
   meetings: { title: "Meetings", sub: "Schedule & minutes" },
   calendar:  { title: "Calendar", sub: "Events & scheduled milestones" },
-  archive:   { title: "Archive", sub: "Company documents & files" },
-  profile:   { title: "Profile", sub: "Company  profiles" },
-  deliverables:{title: "Deliverables", sub: "Team Tasks"},
+  archive:   { title: "Archive", sub: "" },
+  profile:   { title: "Profile", sub: "" },
+  deliverables:   {title: "Deliverables", sub: "Team Tasks"},
 };
 
 function navigate(pageId, btn) {
@@ -256,12 +254,12 @@ let calMonth = new Date().getMonth(); // 0-indexed
   { year, month (1-12), day, label, type: 'event'|'meeting'|'deadline' }
 */
 const CALENDAR_EVENTS = [
-  { year: 2026, month: 4,  day: 29, label: "Investor Sync",    type: "meeting"  },
-  { year: 2026, month: 5,  day: 1,  label: "Workers' Day",     type: "event"    },
-  { year: 2026, month: 5,  day: 6,  label: "Demo Day",         type: "meeting"  },
-  { year: 2026, month: 5,  day: 14, label: "Beta Launch",      type: "event"    },
-  { year: 2026, month: 5,  day: 20, label: "Board Review",     type: "deadline" },
-  { year: 2026, month: 6,  day: 3,  label: "Team Offsite",     type: "event"    },
+  { year: 2026, month: 4,  day: 30, label: "GD",    type: "meeting"  },
+  { year: 2026, month: 5,  day: 1,  label: "RFD",     type: "Meeting"    },
+  // { year: 2026, month: 5,  day: 6,  label: "",         type: "meeting"  },
+  // { year: 2026, month: 5,  day: 14, label: "",      type: "event"    },
+  // { year: 2026, month: 5,  day: 20, label: "",     type: "deadline" },
+  // { year: 2026, month: 6,  day: 3,  label: "",     type: "event"    },
 ];
 
 function buildCalendar() {
