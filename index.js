@@ -17,11 +17,11 @@ const DATA = {
           "Roadmap to be fleshed out by Wilfrid",
         ],
         actions: [
-          "Wilfrid: Work with anyone to finalize offmark Roadmap ⏳",
-          "Kyrian: Deliver the task management system ✅",
-          "Tochi: Sales and Marketing research as applied to Offmark ⏳",
-          "Perfect: Work with Ike to create a functional account for Offmark ⏳",
-          "Ikechukwu: Tailor down the roles and draft how each position applies to Offmark ⏳",
+          "Wilfrid: Work with anyone to finalize offmark Roadmap ",
+          "Kyrian: Deliver the task management system ",
+          "Tochi: Sales and Marketing research as applied to Offmark ",
+          "Perfect: Work with Ike to create a functional account for Offmark ",
+          "Ikechukwu: Tailor down the roles and draft how each position applies to Offmark ",
         ],
         notes: "The N20k contributions from co-founders starts next month",
       },
@@ -178,10 +178,10 @@ function esc(str) {
  //  NAVIGATION
 const topbarMeta = {
   meetings: { title: "Meetings", sub: "Schedule & minutes" },
-  calendar:  { title: "Calendar", sub: "Events & scheduled milestones" },
+  calendar:  { title: "Calendar", sub: "Events" },
   archive:   { title: "Archive", sub: "" },
   profile:   { title: "Profile", sub: "" },
-  deliverables:   {title: "Deliverables", sub: "Team Tasks"},
+  deliverables:   {title: "Tasks", sub: ""},
 };
 
 function navigate(pageId, btn) {
@@ -303,3 +303,108 @@ function changeMonth(dir) {
   if (calMonth > 11) { calMonth = 0; calYear++; }
   buildCalendar();
 }
+
+
+
+const FOUNDERS = [
+  {id:"ike", name:"Ike",    initials:"OI", color:"#6366f1", bg:"#eef2ff"},
+  {id:"kiki",name:"Kyrian",   initials:"OK", color:"#0891b2", bg:"#ecfeff"},
+  {id:"perfect",name:"Perfect", initials:"OP", color:"#059669", bg:"#ecfdf5"},
+  {id:"kamsi",name:"Wilfrid",   initials:"OW", color:"#d97706", bg:"#fffbeb"},
+  {id:"tochi",name:"Somtochi", initials:"US", color:"#dc2626", bg:"#fef2f2"},
+];
+
+const TASKS = [
+  {id:1, name:"Deliver the task management system",        owner:"kiki",   tag:"dev",  done:true},
+  {id:2, name:"Perform Sales and Marketing research, and how it applies to Offmark",      owner:"tochi", tag:"research/strategy",        done:false},
+  {id:3, name:"Work with anyone to provide actionable steps from the roadmap",        owner:"kamsi",  tag:"design",    done:false},
+  {id:4, name:"Create Offmark account with Ike",      owner:"perfect",  tag:"finance",   done:false},
+  {id:5, name:"Tailor down Offmark Co-founder roles ",    owner:"ike",  tag:"strategy",     done:false},
+  // {id:6, name:"Build auth + user accounts",      owner:"tunde", tag:"dev",        done:false},
+  // {id:7, name:"Register company with CAC",       owner:"chidi", tag:"legal",      done:false},
+  // {id:8, name:"Create pitch deck v1",            owner:"kemi",  tag:"funding",    done:false},
+  // {id:9, name:"Write technical architecture doc",owner:"tunde", tag:"dev",        done:false},
+  // {id:10,name:"Map out go-to-market plan",       owner:"ade",   tag:"strategy",   done:false},
+  // {id:11,name:"Draft IP assignment agreements",  owner:"chidi", tag:"legal",      done:false},
+  // {id:12,name:"Set up analytics & error tracking",owner:"ade",  tag:"dev",        done:false},
+  // {id:13,name:"Launch landing page",             owner:"bisi",  tag:"design",     done:false},
+  // {id:14,name:"Open business bank account",      owner:"chidi", tag:"legal",      done:false},
+  // {id:15,name:"Identify first 50 beta users",   owner:"kemi",  tag:"growth",     done:false},
+];
+
+const SECTIONS = [
+  {label:"Completed",  filter: t => t.done},
+  {label:"In progress",filter: t => !t.done},
+];
+
+const founderMap = Object.fromEntries(FOUNDERS.map(f=>[f.id,f]));
+
+function checkSVG(){
+  return `<svg class="check-icon" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="1.5,5.5 4,8 8.5,2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+}
+
+function renderCard(task){
+  const f = founderMap[task.owner];
+  const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const avatarStyle = isDark
+    ? `background:${f.color}22;color:${f.color}`
+    : `background:${f.bg};color:${f.color}`;
+  return `
+  <div class="task-card${task.done?' done':''}" data-id="${task.id}">
+    <div class="task-top">
+      <div class="task-check">${checkSVG()}</div>
+      <span class="task-name">${task.name}</span>
+    </div>
+    <div class="task-footer">
+      <div class="owner-pill">
+        <div class="avatar" style="${avatarStyle}">${f.initials}</div>
+        <span class="owner-name">${f.name}</span>
+      </div>
+      <span class="task-tag">${task.tag}</span>
+    </div>
+  </div>`;
+}
+
+function renderLegend(){
+  const el = document.getElementById('legend');
+  el.innerHTML = FOUNDERS.map(f=>`
+    <div class="legend-item">
+      <div class="legend-dot" style="background:${f.color}"></div>
+      <span>${f.name}</span>
+    </div>`).join('');
+}
+
+function renderStats(){
+  const total = TASKS.length;
+  const done = TASKS.filter(t=>t.done).length;
+  const pct = Math.round(done/total*100);
+  const byOwner = {};
+  TASKS.filter(t=>!t.done).forEach(t=>{byOwner[t.owner]=(byOwner[t.owner]||0)+1});
+  const busiest = FOUNDERS.reduce((a,f)=>((byOwner[f.id]||0)>(byOwner[a]||0)?f.id:a), FOUNDERS[0].id);
+  document.getElementById('prog-bar').style.width = pct+'%';
+  document.getElementById('stats-row').innerHTML = `
+    <div class="stat-card"><div class="stat-label">Total</div><div class="stat-val">${total}</div></div>
+    <div class="stat-card"><div class="stat-label">Done</div><div class="stat-val">${done}</div></div>
+    <div class="stat-card"><div class="stat-label">Remaining</div><div class="stat-val">${total-done}</div></div>
+    <div class="stat-card"><div class="stat-label">Complete</div><div class="stat-val">${pct}%</div></div>`;
+}
+
+function renderSections(){
+  const container = document.getElementById('sections-container');
+  container.innerHTML = SECTIONS.map(s=>{
+    const tasks = TASKS.filter(s.filter);
+    if(!tasks.length) return '';
+    return `<div class="section">
+      <div class="section-label">${s.label} · ${tasks.length}</div>
+      <div class="task-grid">${tasks.map(renderCard).join('')}</div>
+    </div>`;
+  }).join('');
+}
+
+function render(){
+  renderLegend();
+  renderStats();
+  renderSections();
+}
+
+render();

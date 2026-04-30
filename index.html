@@ -222,8 +222,26 @@
       </div>
     </div>
 
-    <div class="page active" id="page-deliverables">
-    
+      <div class="page" id="page-deliverables">
+      <div class="board">
+        <h2 class="sr-only"></h2>
+
+        <div class="board-header">
+          <span class="board-title">Deliverables</span>
+          <span class="board-meta" id="sprint-label">Sprint 01 · Q2 2025</span>
+        </div>
+
+        <div class="stats-row" id="stats-row"></div>
+
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" id="prog-bar" style="width:0%"></div>
+        </div>
+
+        <div class="legend" id="legend"></div>
+
+        <div id="sections-container"></div>
+      </div>
+
     </div>
 
     <!-- #page-calendar -->
@@ -231,7 +249,7 @@
 
       <div class="grid-2">
 
-        CALENDAR GRID
+        <!-- CALENDAR GRID -->
         <div>
           <div class="section-header mb-16">
             <div class="section-title"><div class="dot"></div><span id="cal-month-label">April 2026</span></div>
@@ -243,7 +261,7 @@
           <div class="cal-grid" id="cal-grid"></div>
         </div>
 
-        UPCOMING EVENTS
+        <!-- UPCOMING EVENTS -->
         <div class="card">
           <div class="card-header">
             <div class="card-title">
@@ -601,9 +619,6 @@
   </div><!-- /#content -->
 </div><!-- /#main -->
 
-<script>
-
-</script>
 <script src="index.js"></script>
 </body>
 </html>
