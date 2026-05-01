@@ -1,0 +1,7 @@
+{
+  "name": "My App",
+  "icons": [
+    { "src": "Images/White/Logo2.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "Images/White/Logo2.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
