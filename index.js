@@ -320,7 +320,7 @@ const TASKS = [
   {id:3, name:"Work with anyone to provide actionable steps from the roadmap",        owner:"kamsi",  tag:"design",    done:false},
   {id:4, name:"Create Offmark Bank account with Ike",      owner:"perfect",  tag:"finance",   done:false},
   // {id:5, name:"Tailor down Offmark Co-founder roles ",    owner:"ike",  tag:"strategy",     done:false},
-  {id:6, name:"Draft Co-founder Roles definition as pertaining to Offmark",      owner:"ike", tag:"strategy",        done:done},
+  {id:6, name:"Draft Co-founder Roles definition as pertaining to Offmark",      owner:"ike", tag:"strategy",        done:true},
   // {id:7, name:"Register company with CAC",       owner:"chidi", tag:"legal",      done:false},
   // {id:8, name:"Create pitch deck v1",            owner:"kemi",  tag:"funding",    done:false},
   // {id:9, name:"Write technical architecture doc",owner:"tunde", tag:"dev",        done:false},
