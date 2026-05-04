@@ -318,7 +318,7 @@ const TASKS = [
   {id:1, name:"Deliver the task management system",        owner:"kiki",   tag:"dev",  done:true},
   {id:2, name:"Perform Sales and Marketing research, and how it applies to Offmark",      owner:"tochi", tag:"research/strategy",        done:false},
   {id:3, name:"Work with anyone to provide actionable steps from the roadmap",        owner:"kamsi",  tag:"design",    done:false},
-  {id:4, name:"Create Offmark Bank account with Ike",      owner:"perfect",  tag:"finance",   done:false},
+  {id:4, name:"Create Offmark Bank account with Ike",      owner:"perfect",  tag:"finance",   done:true},
   // {id:5, name:"Tailor down Offmark Co-founder roles ",    owner:"ike",  tag:"strategy",     done:false},
   {id:6, name:"Draft Co-founder Roles definition as pertaining to Offmark",      owner:"ike", tag:"strategy",        done:true},
   // {id:7, name:"Register company with CAC",       owner:"chidi", tag:"legal",      done:false},
