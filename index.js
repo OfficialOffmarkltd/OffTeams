@@ -2,6 +2,29 @@ const DATA = {
     meetings: {
         minutes: [
         {
+        title:     "Strategy and Planning",
+        date:      "Tuesday, May 05, 2026",
+        attendees: ["Ikechukwu O.(CEO)", "Wilfrid O.(CTO)", "Perfect O.(CFO)", "Kyrian O.(COO)", "Somtochi U.(CMO)"],
+        agenda: [
+          "Roadmap Presentation - Wilfrid",
+          "Sales and Marketing Overview - Tochi",
+          "ClickUp Integration - Kyrian",
+        ],
+        decisions: [
+          "Identify path to follow in order to achieve large scale productivity",
+          "Change Project management platform to ClickUp in order to streamline workflow and ease documentation",
+          "Payment of 20k monthly dues, amidst 16k prior payment for debtors",
+        ],
+        actions: [
+          "Wilfrid: Provide Offmark Roadmap document ",
+          "Kyrian: Integrate Clickup ",
+          "Tochi: Sales and Marketing research as applied to Offmark ",
+          "Perfect: Work on Offmark business plan",
+          "Ikechukwu: ",
+        ],
+        notes: "",
+      },
+        {
         title:     "Weekly Check In",
         date:      "Tuesday, April 28, 2026",
         attendees: ["Ikechukwu O.(CEO)", "Wilfrid O.(CTO)", "Perfect O.(CFO)", "Kyrian O.(COO)"],
@@ -316,13 +339,13 @@ const FOUNDERS = [
 
 const TASKS = [
   {id:1, name:"Deliver the task management system",        owner:"kiki",   tag:"dev",  done:true},
-  {id:2, name:"Perform Sales and Marketing research, and how it applies to Offmark",      owner:"tochi", tag:"research/strategy",        done:false},
+  {id:2, name:"Perform Sales and Marketing research, and how it applies to Offmark - Roll Over",      owner:"tochi", tag:"research/strategy",        done:false},
   {id:3, name:"Work with anyone to provide actionable steps from the roadmap",        owner:"kamsi",  tag:"design",    done:true},
   {id:4, name:"Create Offmark Bank account with Ike",      owner:"perfect",  tag:"finance",   done:true},
   // {id:5, name:"Tailor down Offmark Co-founder roles ",    owner:"ike",  tag:"strategy",     done:false},
   {id:6, name:"Draft Co-founder Roles definition as pertaining to Offmark",      owner:"ike", tag:"strategy",        done:true},
-  // {id:7, name:"Register company with CAC",       owner:"chidi", tag:"legal",      done:false},
-  // {id:8, name:"Create pitch deck v1",            owner:"kemi",  tag:"funding",    done:false},
+  {id:7, name:"Integrate ClickUp",       owner:"kiki", tag:"PM",      done:false},
+  {id:8, name:"Work on OffMark Business plan",  owner:"perfect",  tag:"strategy",    done:false},
   // {id:9, name:"Write technical architecture doc",owner:"tunde", tag:"dev",        done:false},
   // {id:10,name:"Map out go-to-market plan",       owner:"ade",   tag:"strategy",   done:false},
   // {id:11,name:"Draft IP assignment agreements",  owner:"chidi", tag:"legal",      done:false},
