@@ -75,7 +75,7 @@ function toggleMinute(i) {
    CONFIG — change password here
 ============================================================= */
 const CONFIG = {
-  password: "offmark2026",       // ← change this in your editor
+  password: "8000",       // ← change this in your editor
   inactivityMinutes: 15,         // lock after N minutes of inactivity
 };
 
